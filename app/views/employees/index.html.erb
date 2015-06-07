@@ -23,8 +23,8 @@
 
 
 				<p>
-					<%= link_to '#{f.name}', employees_path , class: "list-group-item disabled" %>
-					<h3 style="float:right !important;"> &nbsp <%= @percentage %></h3>
+					<%= link_to f.name , employee_path(f) , class: "list-group-item disabled" %>
+					<span class="badge"><% @percentage %> </span>
 				</p>
 		
 				 

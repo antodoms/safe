@@ -73,11 +73,13 @@ end
 
   def show
     @employee = Employee.find(params[:id])
-    @tweets = Tweet.where("users = ?", @employee.id).order("created ASC")
+    @tweets = Tweet.where("users = ?", @employee.id).order("created ASC").limit(50)
+    @acc=0
+    @tot=2
   end
 
   def getdata
-    csv_text = File.read('/Users/antodoms/safe/public/new.csv')
+    csv_text = File.read('/Users/antodoms/safe/public/file.csv')
     #csv = CSV.parse(csv_text, :headers => true)
     text=csv_text.split("\n")
     text.each do |row|
