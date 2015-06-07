@@ -1,0 +1,6 @@
+<h1>Editing Users</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', employees_path, class:"btn btn-success" %>
+<%= link_to 'Delete', @employee , method: :delete, data: { confirm: 'Are you sure?' }, class:"btn btn-danger" %>

@@ -1,0 +1,31 @@
+<div class="col-md-12">
+
+<div class="row pull-left" style="margin-top: 200px; !important">
+
+<%= link_to 'Add New Employee', new_employee_path, class:"btn btn-default btn-success" %>
+
+
+<ul class="col-md-8 pull-left">
+
+<% @employee.each do |f| %>
+			<%	@test = Tweet.where("handle LIKE ?", f.handle) %>
+			<%  c = @test.where("created > ?", Time.now-12.days).count %>
+			<% if c > 0 %>
+				<% @test = @test.limit(c) %>
+				<%	@percentage = 0 %>
+				<% @test.each do |l| %>
+						<% @percentage = @percentage + l.score %>
+				<% end %>
+				<% @percentage = @percentage / c %>
+
+
+				<li><%= f.name %> &nbsp <%= @percentage %></li>
+				<% end %>
+<% end %>
+
+
+</div>
+
+</div>
+
+</div>

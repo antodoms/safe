@@ -1,0 +1,27 @@
+<div class="col-md-12">
+
+<ul class="row">
+<ul>
+
+<% @employee.each do |f| %>
+			<%	@test = Tweet.where("users = ? OR handle = ?", f.id , f.handle) %>
+			<%  @test = @test.where("created >= curdate() - INTERVAL DAYOFWEEK(curdate())+13 DAY AND created  < curdate()- INTERVAL DAYOFWEEK(curdate())-1 DAY") %>
+			<% c=0 %>
+			<%	@percentage = 0 %>
+			<% @test.each do |l| %>
+					<% @percentage = @percentage + l.score %>
+					<% c++ %>
+			<% end %>
+			<% @percentage = @percentage/c %>
+
+
+			<li><%= f.name %> &nbsp <%= @percentage %></li>
+<% end %>
+
+</ul>
+
+</div>
+
+
+
+</div>
