@@ -1,12 +1,15 @@
 <div class="col-md-12">
 
-<div class="row pull-left" style="margin-top: 200px; !important">
+<div class="row container">
 
+<div class="pull-left" style="margin-top: 50px; !important">
 <%= link_to 'Add New Employee', new_employee_path, class:"btn btn-default btn-success" %>
+</div>
 
 
 <ul class="col-md-8 pull-left">
 
+<div class="list-group">
 <% @employee.each do |f| %>
 			<%	@test = Tweet.where("handle LIKE ?", f.handle) %>
 			<%  c = @test.where("created > ?", Time.now-12.days).count %>
@@ -19,10 +22,16 @@
 				<% @percentage = @percentage / c %>
 
 
-				<li><%= f.name %> &nbsp <%= @percentage %></li>
+				<p>
+					<%= link_to '#{f.name}', employees_path , class: "list-group-item disabled" %>
+					<h3 style="float:right !important;"> &nbsp <%= @percentage %></h3>
+				</p>
+		
+				 
 				<% end %>
 <% end %>
 
+</div>
 
 </div>
 

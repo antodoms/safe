@@ -34,7 +34,7 @@ end
 
     respond_to do |format|
       if @employee.save
-        format.html { redirect_to dashboard_path, notice: 'New Employee was successfully created.' }
+        format.html { redirect_to employees_path, notice: 'New Employee was successfully created.' }
         format.json { render :show, status: :created, location: @employee }
       else
         format.html { render :new }
